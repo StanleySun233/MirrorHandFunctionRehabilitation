@@ -37,6 +37,7 @@ patientUpdateById = '{}/{}/{}'.format(InternetAddress, PatientInfoTable, 'update
 TrainInfoTable = 'trainInfo'
 trainInfoListByDate = '{}/{}/{}'.format(InternetAddress, TrainInfoTable, 'listByDate')
 trainInfoInsert = '{}/{}/{}'.format(InternetAddress, TrainInfoTable, 'insert')
+trainInfoListByIdAndTrain = '{}/{}/{}'.format(InternetAddress, TrainInfoTable, 'listByIdAndTrain')
 
 Minio = 'file'
 fileUpload = '{}/{}/{}'.format(InternetAddress, Minio, 'upload')

@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QDateTime, QTimer, Qt
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication, QStyle, QAction, QMenu, QToolButton, QTreeWidgetItem, QTimeEdit, \
-    QDesktopWidget, QFileDialog
+    QDesktopWidget, QFileDialog, QMessageBox
 
 import config
 import frontend
@@ -3158,13 +3158,14 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
                   'status': "已完成",
                   'pic': pic_id,
                   'begin_time': self.beginTime,
-                  'detail': 'None'}
+                  'detail': "随机训练图片",
+                  'save_date': tool.Tools.getNowDate()}
         requests.post(config.trainInfoInsert, data=result)
         self.picturLabel.setPixmap(QPixmap(f"{config.GlobalPath}src/fig/welcome_use.jpg"))
         self.spaceImageWindow.replacePicture(QPixmap(f"{config.GlobalPath}src/fig/welcome_use.jpg"))
 
     def basic_startTask(self):
-        self.beginTime = tool.Tools.getTimeStamp()
+        self.beginTime = tool.Tools.getNowTime()
         _translate = QtCore.QCoreApplication.translate
         if self.basic_type == "AABB":
             for trainTime in range(self.basicTrainTime):
@@ -3216,7 +3217,8 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
                   'status': "已完成",
                   'pic': pic_id,
                   'begin_time': self.beginTime,
-                  'detail': self.trainDetailSheet}
+                  'detail': self.trainDetailSheet,
+                  'save_date': tool.Tools.getNowDate()}
         requests.post(config.trainInfoInsert, data=result)
 
         self.basic_startButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaPlay))
@@ -3266,7 +3268,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
                     en_hand_speed = f"{self.basicDictionary[i]}_{self.basicPlaySpeed}.mp4"
                     self.basicVideoSheet.append(en_hand_speed)
                 except Exception as e:
-                    print(i,e)
+                    print(i, e)
 
             print(self.basicVideoSheet)
 
@@ -3570,7 +3572,8 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
                   'status': "已完成",
                   'pic': pic_id,
                   'begin_time': self.beginTime,
-                  'detail': self.trainDetailSheet}
+                  'detail': self.trainDetailSheet,
+                  'save_date': tool.Tools.getNowDate()}
         requests.post(config.trainInfoInsert, data=result)
 
         self.function_startButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaPlay))
@@ -3651,17 +3654,13 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
     def function_rightRecoderButtonClick(self, *args):  # 功能动作训练-右手录制
         if self.recordFlag != 0:  # 1-left 2-right
             self.recordFlag = 0
-            path = QFileDialog.getExistingDirectory()
-            if path != '':
-                savePath = f"{path}/{tool.Tools.getNowTime()}_function_right.mp4".replace(
-                    "//", "/")
-                recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
-                for i in self.recordSheet:
-                    recorder.saveFigByImg(i)
-                recorder.save()
-                self.recordSheet = []
-            else:
-                return
+            savePath = f"{config.GlobalPath}save/video/{tool.Tools.getNowTime()}_function_right.mp4".replace("//", "/")
+            recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
+            for i in self.recordSheet:
+                recorder.saveFigByImg(i)
+            recorder.save()
+            self.recordSheet = []
+            QMessageBox.information(self, "视频", "视频保存成功", QMessageBox.Yes, QMessageBox.Yes)
         else:
             self.recordFlag = 2
         ...
@@ -3695,31 +3694,40 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             self.mirror_leftIsPlaying = True
         ...
 
-    def mirror_startButtonClick(self,*args):
+    def mirror_startButtonClick(self, *args):
         if self.mirror_isPlaying:
             self.mirror_startButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaStop))
             self.mirror_startButton.setText("停止训练")
             self.mirror_isPlaying = False
-
+            self.beginTime = tool.Tools.getNowTime()
         else:
             self.mirror_startButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaPlay))
             self.mirror_startButton.setText("开始训练")
             self.mirror_isPlaying = True
 
+            pic = self.grab()
+            pic_id = tool.Tools.getTimeStamp()
+            pic.save(f"{config.GlobalPath}save/mirror/{pic_id}.png")
+            result = {"id": self.patient_id,
+                      'end_time': tool.Tools.getNowTime(),
+                      'train': "自主镜像训练",
+                      'status': "已完成",
+                      'pic': pic_id,
+                      'begin_time': self.beginTime,
+                      'detail': "自主训练",
+                      'save_date': tool.Tools.getNowDate()}
+            requests.post(config.trainInfoInsert, data=result)
 
     def mirror_leftRecoderButtonClick(self, *args):  # 镜像训练-左手录制
         if self.recordFlag != 0:  # 1-left 2-right
             self.recordFlag = 0
-            path = QFileDialog.getExistingDirectory()
-            if path != '':
-                savePath = f"{path}/{tool.Tools.getNowTime()}_mirror_left.mp4".replace("//", "/")
-                recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
-                for i in self.recordSheet:
-                    recorder.saveFigByImg(i)
-                recorder.save()
-                self.recordSheet = []
-            else:
-                return
+            savePath = f"{config.GlobalPath}save/video/{tool.Tools.getNowTime()}_mirror_left.mp4".replace("//", "/")
+            recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
+            for i in self.recordSheet:
+                recorder.saveFigByImg(i)
+            recorder.save()
+            self.recordSheet = []
+            QMessageBox.information(self, "视频", "视频保存成功", QMessageBox.Yes, QMessageBox.Yes)
         else:
             self.recordFlag = 1
         ...
@@ -3746,38 +3754,25 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             self.mirror_rightPlayButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaPlay))
             self.mirror_rightPlayButton.setText("播放")
             self.mirror_rightIsPlaying = True
-            pic = self.grab()
-            pic_id = tool.Tools.getTimeStamp()
-            pic.save(f"{config.GlobalPath}save/mirror/{pic_id}.png")
-            result = {"id": self.patient_id,
-                      'end_time': tool.Tools.getNowTime(),
-                      'train': "自主镜像训练",
-                      'status': "已完成",
-                      'pic': pic_id,
-                      'begin_time': self.beginTime,
-                      'detail': self.trainDetailSheet}
-            requests.post(config.trainInfoInsert, data=result)
         ...
 
     def mirror_rightRecoderButtonClick(self, *args):  # 镜像训练-右手录制
         if self.recordFlag != 0:  # 1-left 2-right
             self.recordFlag = 0
-            path = QFileDialog.getExistingDirectory()
-            if path != '':
-                savePath = f"{path}/{tool.Tools.getNowTime()}_mirror_right.mp4".replace("//", "/")
-                recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
-                for i in self.recordSheet:
-                    recorder.saveFigByImg(i)
-                recorder.save()
-                self.recordSheet = []
-            else:
-                return
+            savePath = f"{config.GlobalPath}save/video/{tool.Tools.getNowTime()}_mirror_right.mp4".replace("//", "/")
+            recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
+            for i in self.recordSheet:
+                recorder.saveFigByImg(i)
+            recorder.save()
+            self.recordSheet = []
+            QMessageBox.information(self, "视频", "视频保存成功", QMessageBox.Yes, QMessageBox.Yes)
         else:
             self.recordFlag = 1
         ...
-        ...
 
     def mirror_historyRecordButtonClick(self, *args):  # 镜像训练——显示视频历史记录
+        self.historyWindow = frontend.training.HistoricalHistory.HistoricalHistory(self.patient_id)
+        self.historyWindow.show()
         ...
 
     def sensorimotor_leftMirrrorButtonClick(self, *args):  # 感觉运动训练-左手镜像
@@ -3863,6 +3858,8 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             self.recordFlag = 2
 
     def sensorimotor_historyRecordButtonClick(self, *args):  # 感觉运动训练-显示视频历史记录
+        self.historyWindow = frontend.training.HistoricalHistory.HistoricalHistory(self.patient_id)
+        self.historyWindow.show()
         ...
 
     def sensorimotor_leftStopButtonClick(self, *args):  # 感觉运动训练-左手重新开始
@@ -3936,6 +3933,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
 
     def sensorimotor_startTask(self):
         _translate = QtCore.QCoreApplication.translate
+        self.beginTime = tool.Tools.getNowTime()
         if self.sensorimotor_type == "AABB":
             for i in self.sensorimotorVideoSheet:
                 for trainTime in range(self.sensorimotorTrainTime):
@@ -3984,7 +3982,8 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
                   'status': "已完成",
                   'pic': pic_id,
                   'begin_time': self.beginTime,
-                  'detail': self.trainDetailSheet}
+                  'detail': self.trainDetailSheet,
+                  'save_date': tool.Tools.getNowDate()}
         requests.post(config.trainInfoInsert, data=result)
 
         self.sensorimotor_startButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaPlay))

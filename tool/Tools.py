@@ -38,3 +38,7 @@ def string2sha256(s: str) -> str:
 
 def getNowTime() -> str:
     return datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
+
+
+def getNowDate() -> str:
+    return datetime.datetime.today().strftime("%Y-%m-%d")
