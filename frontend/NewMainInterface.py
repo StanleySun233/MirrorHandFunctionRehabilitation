@@ -484,22 +484,6 @@ class Ui_Form(object):
         self.trainingProgram_tableWidget.setStyleSheet("background:white;font:12pt")
         self.trainingProgram_tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
-        self.trainingProgram_homePageButton = QtWidgets.QPushButton(self.page_2)
-        self.trainingProgram_homePageButton.setGeometry(QtCore.QRect(40, 790, 150, 40))
-        self.trainingProgram_homePageButton.setStyleSheet("font:12pt;background:white\n")
-
-        self.trainingProgram_previousPageButton = QtWidgets.QPushButton(self.page_2)
-        self.trainingProgram_previousPageButton.setGeometry(QtCore.QRect(250, 790, 150, 40))
-        self.trainingProgram_previousPageButton.setStyleSheet("font:12pt;background:white\n")
-
-        self.trainingProgram_nextPageButton = QtWidgets.QPushButton(self.page_2)
-        self.trainingProgram_nextPageButton.setGeometry(QtCore.QRect(460, 790, 150, 40))
-        self.trainingProgram_nextPageButton.setStyleSheet("font:12pt;background:white\n")
-
-        self.trainingProgram_lastPageButton = QtWidgets.QPushButton(self.page_2)
-        self.trainingProgram_lastPageButton.setGeometry(QtCore.QRect(670, 790, 150, 40))
-        self.trainingProgram_lastPageButton.setStyleSheet("font:12pt;background:white\n")
-
         self.trainingProgram_showPageLabel = QtWidgets.QLabel(self.page_2)
         self.trainingProgram_showPageLabel.setGeometry(QtCore.QRect(850, 790, 150, 40))
         self.trainingProgram_showPageLabel.setStyleSheet("font:12pt\n")
@@ -559,22 +543,6 @@ class Ui_Form(object):
         self.trainingLog_tableWidget.setGeometry(QtCore.QRect(0, 0, 1390, 725))
         self.trainingLog_tableWidget.setStyleSheet("background:white")
         self.trainingLog_tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
-
-        self.trainingLog_homePageButton = QtWidgets.QPushButton(self.trainingLog_trainingListFrame)
-        self.trainingLog_homePageButton.setGeometry(QtCore.QRect(50, 650, 150, 40))
-        self.trainingLog_homePageButton.setStyleSheet("font:12pt;background:white")
-
-        self.trainingLog_previousPageButton = QtWidgets.QPushButton(self.trainingLog_trainingListFrame)
-        self.trainingLog_previousPageButton.setGeometry(QtCore.QRect(220, 650, 150, 40))
-        self.trainingLog_previousPageButton.setStyleSheet("font:12pt;background:white")
-
-        self.trainingLog_nextPageButton = QtWidgets.QPushButton(self.trainingLog_trainingListFrame)
-        self.trainingLog_nextPageButton.setGeometry(QtCore.QRect(390, 650, 150, 40))
-        self.trainingLog_nextPageButton.setStyleSheet("font:12pt;background:white")
-
-        self.trainingLog_lastPageButton = QtWidgets.QPushButton(self.trainingLog_trainingListFrame)
-        self.trainingLog_lastPageButton.setGeometry(QtCore.QRect(560, 650, 150, 40))
-        self.trainingLog_lastPageButton.setStyleSheet("font:12pt;background:white")
 
         self.trainingLog_showPageLabel = QtWidgets.QLabel(self.trainingLog_trainingListFrame)
         self.trainingLog_showPageLabel.setGeometry(QtCore.QRect(720, 650, 150, 40))
@@ -947,22 +915,6 @@ class Ui_Form(object):
         self.evaluate_tableWidget.setHorizontalHeaderItem(3, item)
         self.evaluate_tableWidget.setColumnWidth(3, 300)
 
-        self.evaluate_homePageButton = QtWidgets.QPushButton(self.page_4)
-        self.evaluate_homePageButton.setGeometry(QtCore.QRect(60, 802, 150, 40))
-        self.evaluate_homePageButton.setStyleSheet("background:white;font:12pt")
-
-        self.evaluate_previousPageButton = QtWidgets.QPushButton(self.page_4)
-        self.evaluate_previousPageButton.setGeometry(QtCore.QRect(270, 802, 150, 40))
-        self.evaluate_previousPageButton.setStyleSheet("background:white;font:12pt")
-
-        self.evaluate_nextPageButton = QtWidgets.QPushButton(self.page_4)
-        self.evaluate_nextPageButton.setGeometry(QtCore.QRect(490, 802, 150, 40))
-        self.evaluate_nextPageButton.setStyleSheet("background:white;font:12pt")
-
-        self.evaluate_lastPageButton = QtWidgets.QPushButton(self.page_4)
-        self.evaluate_lastPageButton.setGeometry(QtCore.QRect(700, 802, 150, 40))
-        self.evaluate_lastPageButton.setStyleSheet("background:white;font:12pt")
-
         self.evaluate_showPageLabel = QtWidgets.QLabel(self.page_4)
         self.evaluate_showPageLabel.setGeometry(QtCore.QRect(860, 802, 150, 40))
 
@@ -1037,22 +989,6 @@ class Ui_Form(object):
         item = QtWidgets.QTableWidgetItem()
         self.log_tableWidget.setHorizontalHeaderItem(2, item)
         self.log_tableWidget.setColumnWidth(2, 965)
-
-        self.log_homePageButton = QtWidgets.QPushButton(self.page_5)
-        self.log_homePageButton.setGeometry(QtCore.QRect(40, 800, 150, 40))
-        self.log_homePageButton.setStyleSheet("background:white;font:12pt")
-
-        self.log_previousPageButton = QtWidgets.QPushButton(self.page_5)
-        self.log_previousPageButton.setGeometry(QtCore.QRect(250, 800, 150, 40))
-        self.log_previousPageButton.setStyleSheet("background:white;font:12pt")
-
-        self.log_nextPageButton = QtWidgets.QPushButton(self.page_5)
-        self.log_nextPageButton.setGeometry(QtCore.QRect(460, 800, 150, 40))
-        self.log_nextPageButton.setStyleSheet("background:white;font:12pt")
-
-        self.log_lastPageButton = QtWidgets.QPushButton(self.page_5)
-        self.log_lastPageButton.setGeometry(QtCore.QRect(660, 800, 150, 40))
-        self.log_lastPageButton.setStyleSheet("background:white;font:12pt")
 
         self.log_showPageLabel = QtWidgets.QLabel(self.page_5)
         self.log_showPageLabel.setGeometry(QtCore.QRect(830, 800, 150, 40))
@@ -1139,10 +1075,6 @@ class Ui_Form(object):
         self.label_41.setText(_translate("Form", "—"))
         self.traingProgram_inquireButton.setText(_translate("Form", "查询"))
         self.traingProgram_addButton.setText(_translate("Form", "新增"))
-        self.trainingProgram_homePageButton.setText(_translate("Form", "首页"))
-        self.trainingProgram_previousPageButton.setText(_translate("Form", "上一页"))
-        self.trainingProgram_nextPageButton.setText(_translate("Form", "下一页"))
-        self.trainingProgram_lastPageButton.setText(_translate("Form", "尾页"))
         self.label_42.setText(_translate("Form", "训练模式"))
         self.label_43.setText(_translate("Form", "训练日期"))
         self.label_44.setText(_translate("Form", "—"))
@@ -1150,11 +1082,6 @@ class Ui_Form(object):
 
         self.trainingLog_trainingListButton.setText(_translate("Form", "训练列表"))
         self.trainingLog_summaryGraphButton.setText(_translate("Form", "统计图"))
-        self.trainingLog_homePageButton.setText(_translate("Form", "首页"))
-        self.trainingLog_previousPageButton.setText(_translate("Form", "上一页"))
-        self.trainingLog_nextPageButton.setText(_translate("Form", "下一页"))
-        self.trainingLog_lastPageButton.setText(_translate("Form", "尾页"))
-        self.trainingLog_showPageLabel.setText(_translate("Form", "显示页数"))
         self.label_46.setText(_translate("Form", "评定时间"))
         self.label_47.setText(_translate("Form", "—"))
         self.label_48.setText(_translate("Form", "量表类型"))
@@ -1170,10 +1097,6 @@ class Ui_Form(object):
         item.setText(_translate("Form", "量表类型"))
         item = self.evaluate_tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("Form", "评定结果"))
-        self.evaluate_homePageButton.setText(_translate("Form", "首页"))
-        self.evaluate_previousPageButton.setText(_translate("Form", "上一页"))
-        self.evaluate_nextPageButton.setText(_translate("Form", "下一页"))
-        self.evaluate_lastPageButton.setText(_translate("Form", "尾页"))
         self.evaluate_showPageLabel.setText(_translate("Form", "TextLabel"))
         self.label_26.setText(_translate("Form", "训练日期"))
         self.label_27.setText(_translate("Form", "—"))
@@ -1184,11 +1107,6 @@ class Ui_Form(object):
         item.setText(_translate("Form", "训练日期"))
         item = self.log_tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("Form", "训练"))
-        self.log_homePageButton.setText(_translate("Form", "首页"))
-        self.log_previousPageButton.setText(_translate("Form", "上一页"))
-        self.log_nextPageButton.setText(_translate("Form", "下一页"))
-        self.log_lastPageButton.setText(_translate("Form", "尾页"))
-        self.log_showPageLabel.setText(_translate("Form", "显示页数"))
         self.patientBasicInformationButton.setText(_translate("Form", "病人基本信息"))
         self.trainingProgramButton.setText(_translate("Form", "训练方案"))
         self.trainingLogButton.setText(_translate("Form", "训练日志"))
