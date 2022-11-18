@@ -1653,6 +1653,11 @@ class Ui_Form(object):
         self.mirror_rightScreenRecording = QAction(self.page_4)  # 镜像训练-右手录屏
         self.mirror_rightScreenRecording.setText('录屏')
 
+        self.mirror_startButton = QtWidgets.QPushButton(self.page_4)  # 镜像训练-右手播放
+        self.mirror_startButton.setGeometry(QtCore.QRect(840, 725, 100, 40))
+        self.mirror_startButton.setText('开始训练')
+        self.mirror_startButton.setStyleSheet("font:12pt;")
+
         self.mirror_rightPopup_menu = QMenu(self.page_4)
         self.mirror_rightPopup_menu.addAction(self.mirror_rightScreenRecording)
 
