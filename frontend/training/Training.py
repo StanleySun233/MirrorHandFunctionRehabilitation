@@ -1667,6 +1667,7 @@ class Ui_Form(object):
 
         self.mirror_leftIsPlaying = True
         self.mirror_rightIsPlaying = True
+        self.mirror_isPlaying = True
 
         self.page_9 = QtWidgets.QWidget()
 
@@ -2855,6 +2856,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
         self.sensorimotor_startButton.clicked.connect(self.sensorimotor_startButtonClick)  # 感觉运动训练-开始训练
         self.sensorimotor_trainingModeComboBox.currentIndexChanged.connect(
             self.sensorimotor_trainingModeComboBoxClick)  # 感觉运动训练-获取训练模式（单、双、单双）
+        self.mirror_startButton.clicked.connect(self.mirror_startButtonClick)
 
         self.spaceImageWindow = frontend.training.SpaceTrainingPatient.SpaceTrainingPatient()
         self.monitor = QDesktopWidget().screenGeometry(1)
@@ -3693,7 +3695,33 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             self.mirror_leftIsPlaying = True
         ...
 
+    def mirror_startButtonClick(self,*args):
+        if self.mirror_isPlaying:
+            self.mirror_startButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaStop))
+            self.mirror_startButton.setText("停止训练")
+            self.mirror_isPlaying = False
+
+        else:
+            self.mirror_startButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaPlay))
+            self.mirror_startButton.setText("开始训练")
+            self.mirror_isPlaying = True
+
+
     def mirror_leftRecoderButtonClick(self, *args):  # 镜像训练-左手录制
+        if self.recordFlag != 0:  # 1-left 2-right
+            self.recordFlag = 0
+            path = QFileDialog.getExistingDirectory()
+            if path != '':
+                savePath = f"{path}/{tool.Tools.getNowTime()}_mirror_left.mp4".replace("//", "/")
+                recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
+                for i in self.recordSheet:
+                    recorder.saveFigByImg(i)
+                recorder.save()
+                self.recordSheet = []
+            else:
+                return
+        else:
+            self.recordFlag = 1
         ...
 
     def mirror_rightMirrorButtonClick(self, *args):  # 镜像训练-右手镜像
@@ -3712,14 +3740,41 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             self.mirror_rightPlayButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaStop))
             self.mirror_rightPlayButton.setText("停止")
             self.mirror_rightIsPlaying = False
+            self.beginTime = tool.Tools.getNowTime()
 
         else:
             self.mirror_rightPlayButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaPlay))
             self.mirror_rightPlayButton.setText("播放")
             self.mirror_rightIsPlaying = True
+            pic = self.grab()
+            pic_id = tool.Tools.getTimeStamp()
+            pic.save(f"{config.GlobalPath}save/mirror/{pic_id}.png")
+            result = {"id": self.patient_id,
+                      'end_time': tool.Tools.getNowTime(),
+                      'train': "自主镜像训练",
+                      'status': "已完成",
+                      'pic': pic_id,
+                      'begin_time': self.beginTime,
+                      'detail': self.trainDetailSheet}
+            requests.post(config.trainInfoInsert, data=result)
         ...
 
     def mirror_rightRecoderButtonClick(self, *args):  # 镜像训练-右手录制
+        if self.recordFlag != 0:  # 1-left 2-right
+            self.recordFlag = 0
+            path = QFileDialog.getExistingDirectory()
+            if path != '':
+                savePath = f"{path}/{tool.Tools.getNowTime()}_mirror_right.mp4".replace("//", "/")
+                recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
+                for i in self.recordSheet:
+                    recorder.saveFigByImg(i)
+                recorder.save()
+                self.recordSheet = []
+            else:
+                return
+        else:
+            self.recordFlag = 1
+        ...
         ...
 
     def mirror_historyRecordButtonClick(self, *args):  # 镜像训练——显示视频历史记录
@@ -3782,6 +3837,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             self.sensorimotor_rightPlayButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaStop))
             self.sensorimotor_rightPlayButton.setText("停止")
             self.sensorimotor_rightIsPlaying = False
+
 
         else:
             self.sensorimotor_rightPlayButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaPlay))

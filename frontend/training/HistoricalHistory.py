@@ -11,9 +11,9 @@ from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtCore import Qt, QDate
 from PyQt5.QtWidgets import QTableWidget, QHeaderView, QAbstractItemView
 
-from SetSystemSpaceImageAddButtonInterface import setSystemSpaceImageAddButtonInterface
-from SetSystemSpaceImageEditDataInterface import setSystemSpaceImageEditDataInterface
-from SetSystemSpaceImageDeleteButtonInterface import setSystemSpaceImageDeleteButtonInterface
+# from SetSystemSpaceImageAddButtonInterface import setSystemSpaceImageAddButtonInterface
+# from SetSystemSpaceImageEditDataInterface import setSystemSpaceImageEditDataInterface
+# from SetSystemSpaceImageDeleteButtonInterface import setSystemSpaceImageDeleteButtonInterface
 
 
 class Ui_MainWindow(object):
