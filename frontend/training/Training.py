@@ -2507,9 +2507,7 @@ class Ui_Form(object):
         self.sensorimotor_rightCopyButton.setText(_translate("Form", "复制"))
         self.sensorimotor_rightStopButton.setText(_translate("Form", "重新开始"))
         self.sensorimotor_rightMirrrorButton.setText(_translate("Form", "镜像"))
-        self.sensorimotor_LeftRecorderButton.setText(_translate("Form", "录制"))
         self.sensorimotor_startButton.setText(_translate("Form", "开始训练"))
-        self.sensorimotor_rightRecorderButton.setText(_translate("Form", "录制"))
         self.sensorimotor_recommendButton.setText(_translate("Form", "推荐"))
         self.sensorimotor_leftMirrrorButton.setText(_translate("Form", "镜像"))
         self.sensorimotor_leftCopyButton.setText(_translate("Form", "复制"))
@@ -3320,16 +3318,14 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
     def basic_LeftRecoderButtonClick(self, *args):  # 基本动作训练-左手录制
         if self.recordFlag != 0:  # 1-left 2-right
             self.recordFlag = 0
-            path = QFileDialog.getExistingDirectory()
-            if path != '':
-                savePath = f"{path}/{tool.Tools.getNowTime()}_basic_left.mp4".replace("//", "/")
-                recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
-                for i in self.recordSheet:
-                    recorder.saveFigByImg(i)
-                recorder.save()
-                self.recordSheet = []
-            else:
-                return
+            savePath = f"{config.GlobalPath}save/video/{tool.Tools.getNowTime2()}_basic_left.mp4".replace("//", "/")
+            print(savePath)
+            recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', fps=24, size=(550, 520))
+            for i in self.recordSheet:
+                recorder.saveFigByImg(i)
+            recorder.save()
+            self.recordSheet = []
+            QMessageBox.information(self, "视频", "视频保存成功", QMessageBox.Yes, QMessageBox.Yes)
         else:
             self.recordFlag = 1
 
@@ -3364,17 +3360,13 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
     def basic_rightRecoderButtonClick(self, *args):  # 基本动作训练-右手录制
         if self.recordFlag != 0:  # 1-left 2-right
             self.recordFlag = 0
-            path = QFileDialog.getExistingDirectory()
-            if path != '':
-                savePath = f"{path}/{tool.Tools.getNowTime()}_basic_right.mp4".replace(
-                    "//", "/")
-                recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
-                for i in self.recordSheet:
-                    recorder.saveFigByImg(i)
-                recorder.save()
-                self.recordSheet = []
-            else:
-                return
+            savePath = f"{config.GlobalPath}save/video/{tool.Tools.getNowTime2()}function_right.mp4".replace("//", "/")
+            recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
+            for i in self.recordSheet:
+                recorder.saveFigByImg(i)
+            recorder.save()
+            self.recordSheet = []
+            QMessageBox.information(self, "视频", "视频保存成功", QMessageBox.Yes, QMessageBox.Yes)
         else:
             self.recordFlag = 2
         ...
@@ -3574,16 +3566,13 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
     def function_LeftRecoderButtonClick(self, *args):  # 功能动作训练-左手录制
         if self.recordFlag != 0:  # 1-left 2-right
             self.recordFlag = 0
-            path = QFileDialog.getExistingDirectory()
-            if path != '':
-                savePath = f"{path}/{tool.Tools.getNowTime()}_function_left.mp4".replace("//", "/")
-                recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
-                for i in self.recordSheet:
-                    recorder.saveFigByImg(i)
-                recorder.save()
-                self.recordSheet = []
-            else:
-                return
+            savePath = f"{config.GlobalPath}save/video/{tool.Tools.getNowTime2()}_function_left.mp4".replace("//", "/")
+            recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
+            for i in self.recordSheet:
+                recorder.saveFigByImg(i)
+            recorder.save()
+            self.recordSheet = []
+            QMessageBox.information(self, "视频", "视频保存成功", QMessageBox.Yes, QMessageBox.Yes)
         else:
             self.recordFlag = 1
         ...
@@ -3617,7 +3606,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
     def function_rightRecoderButtonClick(self, *args):  # 功能动作训练-右手录制
         if self.recordFlag != 0:  # 1-left 2-right
             self.recordFlag = 0
-            savePath = f"{config.GlobalPath}save/video/{tool.Tools.getNowTime()}_function_right.mp4".replace("//", "/")
+            savePath = f"{config.GlobalPath}save/video/{tool.Tools.getNowTime2()}_function_right.mp4".replace("//", "/")
             recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
             for i in self.recordSheet:
                 recorder.saveFigByImg(i)
@@ -3684,7 +3673,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
     def mirror_leftRecoderButtonClick(self, *args):  # 镜像训练-左手录制
         if self.recordFlag != 0:  # 1-left 2-right
             self.recordFlag = 0
-            savePath = f"{config.GlobalPath}save/video/{tool.Tools.getNowTime()}_mirror_left.mp4".replace("//", "/")
+            savePath = f"{config.GlobalPath}save/video/{tool.Tools.getNowTime2()}_mirror_left.mp4".replace("//", "/")
             recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
             for i in self.recordSheet:
                 recorder.saveFigByImg(i)
@@ -3722,7 +3711,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
     def mirror_rightRecoderButtonClick(self, *args):  # 镜像训练-右手录制
         if self.recordFlag != 0:  # 1-left 2-right
             self.recordFlag = 0
-            savePath = f"{config.GlobalPath}save/video/{tool.Tools.getNowTime()}_mirror_right.mp4".replace("//", "/")
+            savePath = f"{config.GlobalPath}save/video/{tool.Tools.getNowTime2()}_mirror_right.mp4".replace("//", "/")
             recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
             for i in self.recordSheet:
                 recorder.saveFigByImg(i)
@@ -3730,7 +3719,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             self.recordSheet = []
             QMessageBox.information(self, "视频", "视频保存成功", QMessageBox.Yes, QMessageBox.Yes)
         else:
-            self.recordFlag = 1
+            self.recordFlag = 2
         ...
 
     def mirror_historyRecordButtonClick(self, *args):  # 镜像训练——显示视频历史记录
