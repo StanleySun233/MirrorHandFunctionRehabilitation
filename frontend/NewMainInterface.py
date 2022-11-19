@@ -544,9 +544,6 @@ class Ui_Form(object):
         self.trainingLog_tableWidget.setStyleSheet("background:white")
         self.trainingLog_tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
-        self.trainingLog_showPageLabel = QtWidgets.QLabel(self.trainingLog_trainingListFrame)
-        self.trainingLog_showPageLabel.setGeometry(QtCore.QRect(720, 650, 150, 40))
-
         self.trainingLog_summaryGraphFrame = QtWidgets.QFrame(self.page_3)
         self.trainingLog_summaryGraphFrame.setGeometry(QtCore.QRect(0, 135, 1390, 725))
         self.trainingLog_summaryGraphFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -915,9 +912,6 @@ class Ui_Form(object):
         self.evaluate_tableWidget.setHorizontalHeaderItem(3, item)
         self.evaluate_tableWidget.setColumnWidth(3, 300)
 
-        self.evaluate_showPageLabel = QtWidgets.QLabel(self.page_4)
-        self.evaluate_showPageLabel.setGeometry(QtCore.QRect(860, 802, 150, 40))
-
         self.stackedWidget.addWidget(self.page_4)
 
         self.page_5 = QtWidgets.QWidget()
@@ -990,8 +984,6 @@ class Ui_Form(object):
         self.log_tableWidget.setHorizontalHeaderItem(2, item)
         self.log_tableWidget.setColumnWidth(2, 965)
 
-        self.log_showPageLabel = QtWidgets.QLabel(self.page_5)
-        self.log_showPageLabel.setGeometry(QtCore.QRect(830, 800, 150, 40))
         self.stackedWidget.addWidget(self.page_5)
 
         self.patientInformationButton = QtWidgets.QPushButton(Form)
@@ -1097,7 +1089,6 @@ class Ui_Form(object):
         item.setText(_translate("Form", "量表类型"))
         item = self.evaluate_tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("Form", "评定结果"))
-        self.evaluate_showPageLabel.setText(_translate("Form", "TextLabel"))
         self.label_26.setText(_translate("Form", "训练日期"))
         self.label_27.setText(_translate("Form", "—"))
         self.log_inquireButton.setText(_translate("Form", "查询"))
