@@ -10,10 +10,10 @@ class Service:
         self.msg = {'-1': '其他错误', '0': '失败', '1': '成功'}
         self.result = {'data': None, 'msg': self.msg['1'], 'code': 1}
 
-    def insert(self, args, dump=True):
+    def insert(self, args, dump=True,receiveId = False):
         result = self.result.copy()
         try:
-            result['data'] = self.model.insert(args)
+            result['data'] = self.model.insert(args,receiveId=receiveId)
         except:
             result['msg'] = self.msg['0']
             result['code'] = 0

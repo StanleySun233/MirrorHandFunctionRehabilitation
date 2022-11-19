@@ -170,7 +170,17 @@ def trainInfoInsert():
         data = request.values.to_dict()
     else:
         data = request.args.to_dict()
-    res = trainInfoService.insert(data)
+    res = trainInfoService.insert(data,receiveId=True)
+    return res
+
+
+@app.route('/trainInfo/listByIdAndTrain', methods=['POST', 'GET'])
+def trainInfoListByIdAndTrain():
+    if request.method == 'POST':
+        data = request.values.to_dict()
+    else:
+        data = request.args.to_dict()
+    res = trainInfoService.list(attrs=data)
     return res
 
 

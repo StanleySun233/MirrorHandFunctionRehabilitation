@@ -7,8 +7,9 @@ class Model:
         self.sqlClient: tool.SqliteHelper.SqliteHelper = sqlClient
         self.columns = self.sqlClient.getColumns(self.table)
 
-    def insert(self, args):
-        args['id'] = tool.Tools.getTimeStamp()
+    def insert(self, args, receiveId=False):
+        if not receiveId:
+            args['id'] = tool.Tools.getTimeStamp()
         self.sqlClient.insertInfo(self.table, args)
         return args['id']
 
