@@ -40,5 +40,8 @@ def getNowTime() -> str:
     return datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
 
 
+def getNowTime2() -> str:
+    return datetime.datetime.today().strftime("%Y_%m_%d_%H_%M_%S")
+
 def getNowDate() -> str:
     return datetime.datetime.today().strftime("%Y-%m-%d")

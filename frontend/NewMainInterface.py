@@ -102,27 +102,72 @@ class Ui_Form(object):
         # 主界面-数据库-病人基本信息
         self.patientBasicInformationButton = QtWidgets.QPushButton(self.mainFrame)
         self.patientBasicInformationButton.setGeometry(QtCore.QRect(520, 10, 200, 55))
-        self.patientBasicInformationButton.setStyleSheet("font:12pt;background:white;font:12pt")
+        self.patientBasicInformationButton.setStyleSheet('''QPushButton{
+                                                               color: black;
+                                                               background-color:white;
+                                                               font:14pt;}
+                                                               QPushButton:hover{
+                                                               background-color:rgb(0,138,200);
+                                                               color:white}
+                                                           QPushButton:pressed{
+                                                               background-color:rgb(0,138,200);}
+                                                      ''')
 
         # 主界面-数据库-训练方案
         self.trainingProgramButton = QtWidgets.QPushButton(self.mainFrame)
         self.trainingProgramButton.setGeometry(QtCore.QRect(720, 10, 200, 55))
-        self.trainingProgramButton.setStyleSheet("font:12pt;background:white\n")
+        self.trainingProgramButton.setStyleSheet('''QPushButton{
+                                                                color: black;
+                                                                background-color:white;
+                                                                font:14pt;}
+                                                                QPushButton:hover{
+                                                                background-color:rgb(0,138,200);
+                                                                color:white}
+                                                            QPushButton:pressed{
+                                                                background-color:rgb(0,138,200);}
+                                                       ''')
 
         # 主界面-数据库-训练日志
         self.trainingLogButton = QtWidgets.QPushButton(self.mainFrame)
         self.trainingLogButton.setGeometry(QtCore.QRect(920, 10, 200, 55))
-        self.trainingLogButton.setStyleSheet("font:12pt;background:white\n")
+        self.trainingLogButton.setStyleSheet('''QPushButton{
+                                                               color: black;
+                                                               background-color:white;
+                                                               font:14pt;}
+                                                               QPushButton:hover{
+                                                               background-color:rgb(0,138,200);
+                                                               color:white}
+                                                           QPushButton:pressed{
+                                                               background-color:rgb(0,138,200);}
+                                                      ''')
 
         # 主界面-数据库-随访评估
         self.evaluateButton = QtWidgets.QPushButton(self.mainFrame)
         self.evaluateButton.setGeometry(QtCore.QRect(1120, 10, 200, 55))
-        self.evaluateButton.setStyleSheet("font:12pt;background:white\n")
+        self.evaluateButton.setStyleSheet('''QPushButton{
+                                                               color: black;
+                                                               background-color:white;
+                                                               font:14pt;}
+                                                               QPushButton:hover{
+                                                               background-color:rgb(0,138,200);
+                                                               color:white}
+                                                           QPushButton:pressed{
+                                                               background-color:rgb(0,138,200);}
+                                                      ''')
 
         # 主界面-数据库-日志报表
         self.logButton = QtWidgets.QPushButton(self.mainFrame)
         self.logButton.setGeometry(QtCore.QRect(1320, 10, 200, 55))
-        self.logButton.setStyleSheet("font:12pt;background:white")
+        self.logButton.setStyleSheet('''QPushButton{
+                                                               color: black;
+                                                               background-color:white;
+                                                               font:14pt;}
+                                                               QPushButton:hover{
+                                                               background-color:rgb(0,138,200);
+                                                               color:white}
+                                                           QPushButton:pressed{
+                                                               background-color:rgb(0,138,200);}
+                                                      ''')
 
         self.stackedWidget = QtWidgets.QStackedWidget(self.mainFrame)
         self.stackedWidget.setGeometry(QtCore.QRect(520, 70, 1390, 910))
@@ -988,19 +1033,19 @@ class Ui_Form(object):
 
         self.patientInformationButton = QtWidgets.QPushButton(Form)
         self.patientInformationButton.setGeometry(QtCore.QRect(190, 1020, 150, 50))
-        self.patientInformationButton.setStyleSheet("font:12pt")
+        self.patientInformationButton.setStyleSheet("background:rgb(0,138,200);font:14pt;color:white")
 
         self.trainingButton = QtWidgets.QPushButton(Form)
         self.trainingButton.setGeometry(QtCore.QRect(400, 1020, 150, 50))
-        self.trainingButton.setStyleSheet("font:12pt")
+        self.trainingButton.setStyleSheet("font:14pt")
 
         self.setSystemButton = QtWidgets.QPushButton(Form)
         self.setSystemButton.setGeometry(QtCore.QRect(610, 1020, 150, 50))
-        self.setSystemButton.setStyleSheet("font:12pt")
+        self.setSystemButton.setStyleSheet("font:14pt")
 
         self.gameButton = QtWidgets.QPushButton(Form)
         self.gameButton.setGeometry(QtCore.QRect(810, 1020, 150, 50))
-        self.gameButton.setStyleSheet("font:12pt")
+        self.gameButton.setStyleSheet("font:14pt")
         self.gameButton.setVisible(False)
 
         self.retranslateUi(Form)
@@ -1357,6 +1402,48 @@ class mainInterface(QtWidgets.QMainWindow, Ui_Form):
 
     def patientBasicInformationButtonClick(self, *args):  # 主界面-病人基本信息
         self.stackedWidget.setCurrentIndex(0)
+        self.patientBasicInformationButton.setStyleSheet("background:rgb(0,138,200);font:14pt;color:white")
+        self.trainingProgramButton.setStyleSheet('''QPushButton{
+                                                                        color: black;
+                                                                        background-color:white;
+                                                                        font:14pt;}
+                                                                        QPushButton:hover{
+                                                                        background-color:rgb(0,138,200);
+                                                                        color:white}
+                                                                    QPushButton:pressed{
+                                                                        background-color:rgb(0,138,200);}
+                                                               ''')
+        self.trainingLogButton.setStyleSheet('''QPushButton{
+                                                                        color: black;
+                                                                        background-color:white;
+                                                                        font:14pt;}
+                                                                        QPushButton:hover{
+                                                                        background-color:rgb(0,138,200);
+                                                                        color:white}
+                                                                    QPushButton:pressed{
+                                                                        background-color:rgb(0,138,200);}
+                                                               ''')
+
+        self.evaluateButton.setStyleSheet('''QPushButton{
+                                                                        color: black;
+                                                                        background-color:white;
+                                                                        font:14pt;}
+                                                                        QPushButton:hover{
+                                                                        background-color:rgb(0,138,200);
+                                                                        color:white}
+                                                                    QPushButton:pressed{
+                                                                        background-color:rgb(0,138,200);}
+                                                               ''')
+        self.logButton.setStyleSheet('''QPushButton{
+                                                                        color: black;
+                                                                        background-color:white;
+                                                                        font:14pt;}
+                                                                        QPushButton:hover{
+                                                                        background-color:rgb(0,138,200);
+                                                                        color:white}
+                                                                    QPushButton:pressed{
+                                                                        background-color:rgb(0,138,200);}
+                                                               ''')
 
     def patientInformation_addButtonClick(self, *args):  # 主界面-病人基本信息-新增
         ...
@@ -1385,6 +1472,48 @@ class mainInterface(QtWidgets.QMainWindow, Ui_Form):
 
     def trainingProgramButtonClick(self, *args):  # 主界面-训练方案
         self.stackedWidget.setCurrentIndex(1)
+        self.patientBasicInformationButton.setStyleSheet('''QPushButton{
+                                                                               color: black;
+                                                                               background-color:white;
+                                                                               font:14pt;}
+                                                                               QPushButton:hover{
+                                                                               background-color:rgb(0,138,200);
+                                                                               color:white}
+                                                                           QPushButton:pressed{
+                                                                               background-color:rgb(0,138,200);}
+                                                                      ''')
+        self.trainingProgramButton.setStyleSheet("background:rgb(0,138,200);font:14pt;color:white")
+        self.trainingLogButton.setStyleSheet('''QPushButton{
+                                                                               color: black;
+                                                                               background-color:white;
+                                                                               font:14pt;}
+                                                                               QPushButton:hover{
+                                                                               background-color:rgb(0,138,200);
+                                                                               color:white}
+                                                                           QPushButton:pressed{
+                                                                               background-color:rgb(0,138,200);}
+                                                                      ''')
+
+        self.evaluateButton.setStyleSheet('''QPushButton{
+                                                                               color: black;
+                                                                               background-color:white;
+                                                                               font:14pt;}
+                                                                               QPushButton:hover{
+                                                                               background-color:rgb(0,138,200);
+                                                                               color:white}
+                                                                           QPushButton:pressed{
+                                                                               background-color:rgb(0,138,200);}
+                                                                      ''')
+        self.logButton.setStyleSheet('''QPushButton{
+                                                                               color: black;
+                                                                               background-color:white;
+                                                                               font:14pt;}
+                                                                               QPushButton:hover{
+                                                                               background-color:rgb(0,138,200);
+                                                                               color:white}
+                                                                           QPushButton:pressed{
+                                                                               background-color:rgb(0,138,200);}
+                                                                      ''')
         pass
 
     def trainingProgramInquireButtonClick(self, *args):  # 主界面-训练方案-查询
@@ -1395,6 +1524,48 @@ class mainInterface(QtWidgets.QMainWindow, Ui_Form):
 
     def trainingLogButtonClick(self, *args):  # 主界面-训练日志
         self.stackedWidget.setCurrentIndex(2)
+        self.patientBasicInformationButton.setStyleSheet('''QPushButton{
+                                                                                  color: black;
+                                                                                  background-color:white;
+                                                                                  font:14pt;}
+                                                                                  QPushButton:hover{
+                                                                                  background-color:rgb(0,138,200);
+                                                                                  color:white}
+                                                                              QPushButton:pressed{
+                                                                                  background-color:rgb(0,138,200);}
+                                                                         ''')
+        self.trainingProgramButton.setStyleSheet('''QPushButton{
+                                                                                  color: black;
+                                                                                  background-color:white;
+                                                                                  font:14pt;}
+                                                                                  QPushButton:hover{
+                                                                                  background-color:rgb(0,138,200);
+                                                                                  color:white}
+                                                                              QPushButton:pressed{
+                                                                                  background-color:rgb(0,138,200);}
+                                                                         ''')
+        self.trainingLogButton.setStyleSheet("background:rgb(0,138,200);font:14pt;color:white")
+
+        self.evaluateButton.setStyleSheet('''QPushButton{
+                                                                                  color: black;
+                                                                                  background-color:white;
+                                                                                  font:14pt;}
+                                                                                  QPushButton:hover{
+                                                                                  background-color:rgb(0,138,200);
+                                                                                  color:white}
+                                                                              QPushButton:pressed{
+                                                                                  background-color:rgb(0,138,200);}
+                                                                         ''')
+        self.logButton.setStyleSheet('''QPushButton{
+                                                                                  color: black;
+                                                                                  background-color:white;
+                                                                                  font:14pt;}
+                                                                                  QPushButton:hover{
+                                                                                  background-color:rgb(0,138,200);
+                                                                                  color:white}
+                                                                              QPushButton:pressed{
+                                                                                  background-color:rgb(0,138,200);}
+                                                                         ''')
 
     def trainingLogInquireButtonClick(self, *args):  # 主界面-训练日志-查询
         begDate = ''
@@ -1423,6 +1594,48 @@ class mainInterface(QtWidgets.QMainWindow, Ui_Form):
 
     def evaluateButtonClick(self, *args):  # 主界面-随访评估
         self.stackedWidget.setCurrentIndex(3)
+        self.patientBasicInformationButton.setStyleSheet('''QPushButton{
+                                                                                          color: black;
+                                                                                          background-color:white;
+                                                                                          font:14pt;}
+                                                                                          QPushButton:hover{
+                                                                                          background-color:rgb(0,138,200);
+                                                                                          color:white}
+                                                                                      QPushButton:pressed{
+                                                                                          background-color:rgb(0,138,200);}
+                                                                                 ''')
+        self.trainingProgramButton.setStyleSheet('''QPushButton{
+                                                                                          color: black;
+                                                                                          background-color:white;
+                                                                                          font:14pt;}
+                                                                                          QPushButton:hover{
+                                                                                          background-color:rgb(0,138,200);
+                                                                                          color:white}
+                                                                                      QPushButton:pressed{
+                                                                                          background-color:rgb(0,138,200);}
+                                                                                 ''')
+        self.trainingLogButton.setStyleSheet('''QPushButton{
+                                                                                          color: black;
+                                                                                          background-color:white;
+                                                                                          font:14pt;}
+                                                                                          QPushButton:hover{
+                                                                                          background-color:rgb(0,138,200);
+                                                                                          color:white}
+                                                                                      QPushButton:pressed{
+                                                                                          background-color:rgb(0,138,200);}
+                                                                                 ''')
+
+        self.evaluateButton.setStyleSheet("background:rgb(0,138,200);font:14pt;color:white")
+        self.logButton.setStyleSheet('''QPushButton{
+                                                                                          color: black;
+                                                                                          background-color:white;
+                                                                                          font:14pt;}
+                                                                                          QPushButton:hover{
+                                                                                          background-color:rgb(0,138,200);
+                                                                                          color:white}
+                                                                                      QPushButton:pressed{
+                                                                                          background-color:rgb(0,138,200);}
+                                                                                 ''')
 
         # def evaluate_cognitiveFunctionAssessmentQMenuClick(self, *args):  #  主界面-随访评估-认知功能评定
         #     self.CognitiveFunctionAssessmentWindow=frontend.evaluate.CognitiveFunctionAssessment.cognitiveFunctionAssessment()
@@ -1434,6 +1647,48 @@ class mainInterface(QtWidgets.QMainWindow, Ui_Form):
 
     def logButtonClick(self, *args):  # 主界面-日志报表
         self.stackedWidget.setCurrentIndex(4)
+        self.patientBasicInformationButton.setStyleSheet('''QPushButton{
+                                                                                      color: black;
+                                                                                      background-color:white;
+                                                                                      font:14pt;}
+                                                                                      QPushButton:hover{
+                                                                                      background-color:rgb(0,138,200);
+                                                                                      color:white}
+                                                                                  QPushButton:pressed{
+                                                                                      background-color:rgb(0,138,200);}
+                                                                             ''')
+        self.trainingProgramButton.setStyleSheet('''QPushButton{
+                                                                                      color: black;
+                                                                                      background-color:white;
+                                                                                      font:14pt;}
+                                                                                      QPushButton:hover{
+                                                                                      background-color:rgb(0,138,200);
+                                                                                      color:white}
+                                                                                  QPushButton:pressed{
+                                                                                      background-color:rgb(0,138,200);}
+                                                                             ''')
+        self.trainingLogButton.setStyleSheet('''QPushButton{
+                                                                                      color: black;
+                                                                                      background-color:white;
+                                                                                      font:14pt;}
+                                                                                      QPushButton:hover{
+                                                                                      background-color:rgb(0,138,200);
+                                                                                      color:white}
+                                                                                  QPushButton:pressed{
+                                                                                      background-color:rgb(0,138,200);}
+                                                                             ''')
+
+        self.evaluateButton.setStyleSheet('''QPushButton{
+                                                                                      color: black;
+                                                                                      background-color:white;
+                                                                                      font:14pt;}
+                                                                                      QPushButton:hover{
+                                                                                      background-color:rgb(0,138,200);
+                                                                                      color:white}
+                                                                                  QPushButton:pressed{
+                                                                                      background-color:rgb(0,138,200);}
+                                                                             ''')
+        self.logButton.setStyleSheet("background:rgb(0,138,200);font:14pt;color:white")
 
     def trainButtonClicked(self, *args):
         if self.patientSelectedId:
