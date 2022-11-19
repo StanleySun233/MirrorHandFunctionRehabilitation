@@ -2011,19 +2011,7 @@ class Ui_Form(object):
         self.sensorimotor_leftStopButton.setGeometry(QtCore.QRect(905, 620, 120, 40))
         self.sensorimotor_leftStopButton.setStyleSheet("font:12pt")
 
-        self.sensorimotor_LeftRecorderButton = QtWidgets.QToolButton(self.page_9)  # 感觉运动训练-左手录制
-        self.sensorimotor_LeftRecorderButton.setGeometry(QtCore.QRect(1065, 620, 120, 40))
-        self.sensorimotor_LeftRecorderButton.setStyleSheet("font:12pt")
 
-        self.sensorimotor_leftScreenRecording = QAction(self.page_9)  # 感觉运动训练-左手录屏
-        self.sensorimotor_leftScreenRecording.setText('录屏')
-
-        self.sensorimotor_leftPopup_menu = QMenu(self.page_9)
-        self.sensorimotor_leftPopup_menu.addAction(self.sensorimotor_leftScreenRecording)
-
-        self.sensorimotor_LeftRecorderButton.setPopupMode(QToolButton.MenuButtonPopup)
-        self.sensorimotor_LeftRecorderButton.setAutoRaise(True)
-        self.sensorimotor_LeftRecorderButton.setMenu(self.sensorimotor_leftPopup_menu)
 
         self.label_52 = QtWidgets.QLabel(self.page_9)
         self.label_52.setGeometry(QtCore.QRect(1350, 30, 120, 40))
@@ -2050,37 +2038,6 @@ class Ui_Form(object):
         self.sensorimotor_rightStopButton.setGeometry(QtCore.QRect(1510, 620, 120, 40))
         self.sensorimotor_rightStopButton.setStyleSheet("font:12pt")
 
-        self.sensorimotor_oneDelayButton = QtWidgets.QToolButton(self.page_9)  # 感觉运动训练-延迟镜像
-        self.sensorimotor_oneDelayButton.setGeometry(QtCore.QRect(1510, 680, 150, 40))
-        self.sensorimotor_oneDelayButton.setText('单侧延迟')
-        self.sensorimotor_oneDelayButton.setStyleSheet("font:12pt")
-
-        self.sensorimotor_twoDelayAction = QAction(self.page_9)
-        self.sensorimotor_twoDelayAction.setText('双侧延迟')
-        self.sensorimotor_oneTwoDelayAction = QAction(self.page_9)
-        self.sensorimotor_oneTwoDelayAction.setText('单双侧延迟')
-
-        self.sensorimotor_delayPopup_menu = QMenu(self.page_9)
-        self.sensorimotor_delayPopup_menu.addAction(self.sensorimotor_twoDelayAction)
-        self.sensorimotor_delayPopup_menu.addAction(self.sensorimotor_oneTwoDelayAction)
-
-        self.sensorimotor_oneDelayButton.setPopupMode(QToolButton.MenuButtonPopup)
-        self.sensorimotor_oneDelayButton.setAutoRaise(True)
-        self.sensorimotor_oneDelayButton.setMenu(self.sensorimotor_delayPopup_menu)
-
-        self.sensorimotor_rightRecorderButton = QtWidgets.QToolButton(self.page_9)  # 感觉运动训练-右手录制
-        self.sensorimotor_rightRecorderButton.setGeometry(QtCore.QRect(1670, 620, 120, 40))
-        self.sensorimotor_rightRecorderButton.setStyleSheet("font:12pt")
-
-        self.sensorimotor_rightScreenRecording = QAction(self.page_9)  # 感觉运动训练-右手录屏
-        self.sensorimotor_rightScreenRecording.setText('录屏')
-
-        self.sensorimotor_rightPopup_menu = QMenu(self.page_9)
-        self.sensorimotor_rightPopup_menu.addAction(self.sensorimotor_rightScreenRecording)
-
-        self.sensorimotor_rightRecorderButton.setPopupMode(QToolButton.MenuButtonPopup)
-        self.sensorimotor_rightRecorderButton.setAutoRaise(True)
-        self.sensorimotor_rightRecorderButton.setMenu(self.sensorimotor_rightPopup_menu)
 
         self.sensorimotor_cancelButton = QtWidgets.QPushButton(self.page_9)  # 感觉运动训练-全部取消
         self.sensorimotor_cancelButton.setGeometry(QtCore.QRect(10, 620, 120, 40))
@@ -2842,13 +2799,11 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
         self.sensorimotor_leftMaskButton.clicked.connect(self.sensorimotor_leftMaskButtonClick)  # 感觉运动训练-左手遮罩
         self.sensorimotor_leftPlayButton.clicked.connect(self.sensorimotor_leftPlayButtonClick)  # 感觉运动训练-左手播放
         self.sensorimotor_leftStopButton.clicked.connect(self.sensorimotor_leftStopButtonClick)  # 感觉运动训练-左手重新开始
-        self.sensorimotor_LeftRecorderButton.clicked.connect(self.sensorimotor_leftRecoderButtonClick)  # 感觉运动训练-左手录制
         self.sensorimotor_rightMirrrorButton.clicked.connect(self.sensorimotor_rightMirrorButtonClick)  # 感觉运动训练-右手镜像
         self.sensorimotor_rightCopyButton.clicked.connect(self.sensorimotor_rightCopyButtonClick)  # 感觉运动训练-右手复制
         self.sensorimotor_rightMaskButton.clicked.connect(self.sensorimotor_rightMaskButtonClick)  # 感觉运动训练-右手遮罩
         self.sensorimotor_rightPlayButton.clicked.connect(self.sensorimotor_rightPlayButtonClick)  # 感觉运动训练-右手播放
         self.sensorimotor_rightStopButton.clicked.connect(self.sensorimotor_rightStopButtonClick)  # 感觉运动训练-右手重新开始
-        self.sensorimotor_rightRecorderButton.clicked.connect(self.sensorimotor_rightRecoderButtonClick)  # 感觉运动训练-右手录制
         self.sensorimotor_cancelButton.clicked.connect(self.sensorimotor_cancelButtonClick)  # 感觉运动训练-全部取消
         self.sensorimotor_selectAllButton.clicked.connect(self.sensorimotor_selectAllButtonClick)  # 感觉运动训练-全选
         self.sensorimotor_historyRecordButton.clicked.connect(
@@ -3195,6 +3150,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
                         self.basic_trainingNameLabel.setText(_translate("Form", i))
                         for trainTime in range(self.basicTrainTime):
                             cap = cv2.VideoCapture(config.GlobalPath + "src/video/basic/" + i)
+                            print()
                             print(i)
                             while True:
                                 ret, frame = cap.read()
@@ -3261,6 +3217,9 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
                 self.basicPlaySpeed = 1
             else:
                 self.basicPlaySpeed = float(self.basicPlaySpeed)
+
+            if self.basicPlaySpeed == 1.0:
+                self.basicPlaySpeed = 1
 
             self.basicVideoSheet = []
 
@@ -3460,6 +3419,9 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
                 self.functionPlaySpeed = 1
             else:
                 self.functionPlaySpeed = float(self.functionPlaySpeed)
+
+            if self.functionPlaySpeed == 1.0:
+                self.basicPlaySpeed = 1
 
             self.functionVideoSheet = []
 
@@ -3798,24 +3760,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             self.sensorimotor_leftIsPlaying = True
         ...
 
-    def sensorimotor_leftRecoderButtonClick(self, *args):  # 感觉运动训练-左手录制
-        if self.recordFlag != 0:  # 1-left 2-right
-            self.recordFlag = 0
-            path = QFileDialog.getExistingDirectory()
-            if path != '':
-                savePath = f"{path}/{tool.Tools.getNowTime()}_sensorimotor_left.mp4".replace(
-                    "//", "/")
-                print(savePath)
-                print(len(self.recordSheet))
-                recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
-                for i in self.recordSheet:
-                    recorder.saveFigByImg(i)
-                recorder.save()
-                self.recordSheet = []
-            else:
-                return
-        else:
-            self.recordFlag = 1
+
 
     def sensorimotor_rightMirrorButtonClick(self, *args):  # 感觉运动训练-右手镜像
         self.rightCameraFlip ^= 1
@@ -3840,23 +3785,6 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             self.sensorimotor_rightPlayButton.setText("播放")
             self.sensorimotor_rightIsPlaying = True
         ...
-
-    def sensorimotor_rightRecoderButtonClick(self, *args):  # 感觉运动训练-右手录制
-        if self.recordFlag != 0:  # 1-left 2-right
-            self.recordFlag = 0
-            path = QFileDialog.getExistingDirectory()
-            if path != '':
-                savePath = f"{path}/{tool.Tools.getNowTime()}_sensorimotor_right.mp4".replace(
-                    "//", "/")
-                recorder = tool.VideoHelper.VideoWriter(savePath, 'mp4', 24, (550, 520))
-                for i in self.recordSheet:
-                    recorder.saveFigByImg(i)
-                recorder.save()
-                self.recordSheet = []
-            else:
-                return
-        else:
-            self.recordFlag = 2
 
     def sensorimotor_historyRecordButtonClick(self, *args):  # 感觉运动训练-显示视频历史记录
         self.historyWindow = frontend.training.HistoricalHistory.HistoricalHistory(self.patient_id)
