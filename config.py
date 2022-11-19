@@ -15,7 +15,7 @@ InternetSecurity = False
 InternetAddress = 'http{}://{}:{}'.format('s' if InternetSecurity else '', InternetIp, ConsolePort)
 
 LeftCaptureId = 0
-RightCaptureId = 0
+RightCaptureId = 1
 # RightCaptureId = 'rtsp://admin:@192.168.2.100:554/stream1'
 
 UserInfoTable = 'user'

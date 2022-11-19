@@ -2885,8 +2885,8 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
         self.functionWindow.hide()
 
         self.leftCamera = tool.VideoHelper.CameraReader(config.LeftCaptureId)
-        # self.rightCamera = tool.VideoHelper.CameraReader(config.RightCaptureId)
-        self.rightCamera = self.leftCamera
+        self.rightCamera = tool.VideoHelper.CameraReader(config.RightCaptureId)
+        # self.rightCamera = self.leftCamera
 
         self.cameraWorker = threading.Thread(target=self.cameraRead)
         self.cameraWorker.start()
@@ -3089,6 +3089,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             name = i["pic_id"]
             img_small = QPixmap(f"{config.GlobalPath}src/train/{_diff}/{_type}/{name}")
             img_large = QPixmap(f"{config.GlobalPath}src/train/{_diff}/{_type}/{name}")
+            print(f"{config.GlobalPath}src/train/{_diff}/{_type}/{name}")
             img_large = img_large.scaled(1300, 1100)
             self.picturLabel.setPixmap(img_small)
             self.spaceImageWindow.replacePicture(img_large)
