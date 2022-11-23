@@ -57,3 +57,6 @@ muscleStrengthInsert = '{}/{}/{}'.format(InternetAddress, muscleStrengthTable, '
 
 VASTable = 'vas'
 VASInsert = '{}/{}/{}'.format(InternetAddress, VASTable, 'insert')
+
+addPlanTable = 'addPlan'
+addPlanInsert = '{}/{}/{}'.format(InternetAddress, addPlanTable, 'insert')

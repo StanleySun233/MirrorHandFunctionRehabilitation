@@ -5,3 +5,4 @@ import frontend.NewMainInterface
 import frontend.setSystem
 import frontend.training
 import frontend.evaluate
+import frontend.trainingProgram
