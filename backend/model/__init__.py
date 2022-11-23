@@ -6,3 +6,4 @@ import backend.model.SqlLog
 import backend.model.TrainInfo
 import backend.model.UserInfo
 import backend.model.VAS
+import backend.model.AddPlan

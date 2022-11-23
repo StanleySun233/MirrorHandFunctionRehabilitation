@@ -26,6 +26,7 @@ spaceImageConfigModel = backend.model.SpaceImageConfig.SpaceImageConfig('space_i
 ashworthModel = backend.model.Ashworth.Ashworth('ashworth', sqliteClient)
 muscleStrengthModel = backend.model.MuscleStrength.MuscleStrength('muscle_strength', sqliteClient)
 VASModel = backend.model.VAS.VAS('vas', sqliteClient)
+AddPlanModel = backend.model.AddPlan.AddPlan('add_plan', sqliteClient)
 
 userInfoService = backend.service.UserInfoService.UserInfoService(userInfoModel)
 patientInfoService = backend.service.PatientInfoService.PatientInfoService(patientInfoModel)
@@ -34,6 +35,7 @@ spaceImageConfigService = backend.service.SpaceImageConfigService.SpaceImageConf
 ashworthService = backend.service.Ashworth.AshworhService(ashworthModel)
 muscleStrengthService = backend.service.MuscleStrength.MuscleStrength(muscleStrengthModel)
 VASService = backend.service.VASService.VASService(VASModel)
+addPlanService = backend.service.AddPlan.AddPlanService(VASModel)
 
 
 @app.route('/file/upload', methods=['POST', 'GET'])
@@ -170,7 +172,7 @@ def trainInfoInsert():
         data = request.values.to_dict()
     else:
         data = request.args.to_dict()
-    res = trainInfoService.insert(data,receiveId=True)
+    res = trainInfoService.insert(data, receiveId=True)
     return res
 
 
@@ -251,6 +253,16 @@ def VASInsert():
     else:
         data = request.args.to_dict()
     res = VASService.insert(data)
+    return res
+
+
+@app.route('/addPlan/insert', methods=['POST', 'GET'])
+def VASInsert():
+    if request.method == 'POST':
+        data = request.values.to_dict()
+    else:
+        data = request.args.to_dict()
+    res = addPlanService.insert(data)
     return res
 
 

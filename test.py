@@ -4,7 +4,8 @@ with open('trans.txt', 'r', encoding='utf-8') as f:
 d = {}
 
 for i in sheet:
-    name_cn, name_en = i.split(":")
+    print(i)
+    name_cn, name_en = i[0], i[1]
     d[name_en] = name_cn
     d[name_cn] = name_en
 

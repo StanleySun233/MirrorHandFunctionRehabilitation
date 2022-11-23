@@ -2011,8 +2011,6 @@ class Ui_Form(object):
         self.sensorimotor_leftStopButton.setGeometry(QtCore.QRect(905, 620, 120, 40))
         self.sensorimotor_leftStopButton.setStyleSheet("font:12pt")
 
-
-
         self.label_52 = QtWidgets.QLabel(self.page_9)
         self.label_52.setGeometry(QtCore.QRect(1350, 30, 120, 40))
         self.label_52.setText("右手")
@@ -2037,7 +2035,6 @@ class Ui_Form(object):
         self.sensorimotor_rightStopButton = QtWidgets.QPushButton(self.page_9)  # 感觉运动训练-右手重新开始
         self.sensorimotor_rightStopButton.setGeometry(QtCore.QRect(1510, 620, 120, 40))
         self.sensorimotor_rightStopButton.setStyleSheet("font:12pt")
-
 
         self.sensorimotor_cancelButton = QtWidgets.QPushButton(self.page_9)  # 感觉运动训练-全部取消
         self.sensorimotor_cancelButton.setGeometry(QtCore.QRect(10, 620, 120, 40))
@@ -3128,6 +3125,8 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
                         self.basic_trainingNameLabel.setText(_translate("Form", i))
                         for playTime in range(self.basicPlayTime):
                             cap = cv2.VideoCapture(config.GlobalPath + "src/video/basic/" + i)
+                            self.basic_trainingRemainNumLabel.setText(
+                                _translate("Form", str(self.basicGroupTime - groupTime - 1)))
                             print(i)
                             while True:
                                 ret, frame = cap.read()
@@ -3148,7 +3147,8 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
                         self.basic_trainingNameLabel.setText(_translate("Form", i))
                         for trainTime in range(self.basicTrainTime):
                             cap = cv2.VideoCapture(config.GlobalPath + "src/video/basic/" + i)
-                            print()
+                            self.basic_trainingRemainNumLabel.setText(
+                                _translate("Form", str(self.basicGroupTime - groupTime - 1)))
                             print(i)
                             while True:
                                 ret, frame = cap.read()
@@ -3271,6 +3271,8 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
 
             self.basicStartTask = threading.Thread(target=self.basic_startTask)
             self.basicStartTask.start()
+
+            self.basic_trianingGroupsLabel.setText(_translate("Form", str(self.basicGroupTime)))
 
         else:
             self.basic_startButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaPlay))
@@ -3466,6 +3468,10 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             self.functionStartTask = threading.Thread(target=self.function_startTask)
             self.functionStartTask.start()
 
+            self.function_trianingGroupsLabel.setText(_translate("Form", str(self.functionGroupTime)))
+            # TODO
+            # self.function_trainingNumber
+
         else:
             self.function_startButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaPlay))
             self.function_startButton.setText("开始训练")
@@ -3485,6 +3491,8 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
                         self.function_trainingNameLabel.setText(_translate("Form", i))
                         for playTime in range(self.functionPlayTime):  # 播放次数
                             cap = cv2.VideoCapture(config.GlobalPath + "src/video/function/" + i)
+                            self.function_trainingRemainNumLabel.setText(
+                                _translate("Form", str(self.functionGroupTime - groupTime - 1)))
                             while True:
                                 ret, frame = cap.read()
                                 if not ret:
@@ -3505,6 +3513,8 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
                         self.function_trainingNameLabel.setText(_translate("Form", i))
                         for trainTime in range(self.functionTrainTime):
                             cap = cv2.VideoCapture(config.GlobalPath + "src/video/function/" + i)
+                            self.function_trainingRemainNumLabel.setText(
+                                _translate("Form", str(self.functionGroupTime - groupTime - 1)))
                             while True:
                                 ret, frame = cap.read()
                                 if not ret:
@@ -3749,8 +3759,6 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             self.sensorimotor_leftIsPlaying = True
         ...
 
-
-
     def sensorimotor_rightMirrorButtonClick(self, *args):  # 感觉运动训练-右手镜像
         self.rightCameraFlip ^= 1
         ...
@@ -3832,8 +3840,8 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
                 self.sensorimotorPlaySpeed = 1
 
             # self.sensorimotor_trainingMode.setText(_translate("Form", self.sensorimotor_type))
-            # self.sensorimotor_trainingTotalNumLabel.setText(_translate("Form", str(self.sensorimotorTrainTime)))
-            # self.sensorimotor_trainingCurrentNumLabel.setText(_translate("Form", str(self.sensorimotorShowTime)))
+            self.sensorimotor_trainingTotalNumLabel.setText(_translate("Form", str(self.sensorimotorTrainTime)))
+            self.sensorimotor_trainingCurrentNumLabel.setText(_translate("Form", str(self.sensorimotorShowTime)))
 
             self.sensorimotorTask = threading.Thread(target=self.sensorimotor_startTask)
             self.sensorimotorTask.start()

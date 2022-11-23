@@ -1520,6 +1520,7 @@ class mainInterface(QtWidgets.QMainWindow, Ui_Form):
         ...
 
     def trainingProgramAddButtonClick(self, *args):  # 主界面-训练方案-新增
+        self.trainingProgramAddWindow = frontend.trainingProgram.AddTrainingplan
         ...
 
     def trainingLogButtonClick(self, *args):  # 主界面-训练日志
