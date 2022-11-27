@@ -2842,6 +2842,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
         self.cameraWorker.start()
 
     def cameraRead(self):
+        # 读取摄像头，左侧的是self.leftCameraImage，是一个数组[cv2.Image,pyqt.Pixmap]
         while True:
             if self.leftCameraFlip == 1:
                 self.leftCameraImage = self.leftCamera.readCamera(picSize=(960, 1080))
@@ -2894,6 +2895,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
                 self.recordSheet.append(self.rightCameraImage[0])
 
     def cameraStatusReset(self):
+        # 每次更换训练项目，重置摄像头状态。
         self.leftCameraFlip = 1
         self.rightCameraFlip = 1
         self.leftCameraBlank = 0
@@ -2918,8 +2920,6 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
         dt = QDateTime.currentDateTime()
         # 设置系统时间的显示格式
         timeDisplay = dt.toString('yyyy-MM-dd hh:mm:ss dddd')
-        # print(timeDisplay)
-        # 状态栏显示
         timeLabel.setText(timeDisplay)
 
     def statusShowTime(self):  # 实时显示系统时间

@@ -257,7 +257,7 @@ def VASInsert():
 
 
 @app.route('/addPlan/insert', methods=['POST', 'GET'])
-def VASInsert():
+def addPlanInsert():
     if request.method == 'POST':
         data = request.values.to_dict()
     else:
