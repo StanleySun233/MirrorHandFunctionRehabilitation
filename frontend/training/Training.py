@@ -2920,8 +2920,6 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
         dt = QDateTime.currentDateTime()
         # 设置系统时间的显示格式
         timeDisplay = dt.toString('yyyy-MM-dd hh:mm:ss dddd')
-        # print(timeDisplay)
-        # 状态栏显示
         timeLabel.setText(timeDisplay)
 
     def statusShowTime(self):  # 实时显示系统时间
