@@ -17,13 +17,12 @@ class Ui_Form(object):
     def setupUi(self, Form):
         Form.resize(1920, 1080)
         self.frame = QtWidgets.QFrame(Form)
-        self.frame.setGeometry(QtCore.QRect(0, 0,1920, 1080))
+        self.frame.setGeometry(QtCore.QRect(0, 0, 1920, 1080))
         self.frame.setStyleSheet("background:rgb(242,249,255)")
 
         self.label = QtWidgets.QLabel(self.frame)
-        self.label.setGeometry(QtCore.QRect(10, 20,120, 40))
+        self.label.setGeometry(QtCore.QRect(10, 20, 120, 40))
         self.label.setStyleSheet("font:14pt")
-
 
         self.schemeNamelineEdit = QtWidgets.QLineEdit(self.frame)
         self.schemeNamelineEdit.setGeometry(QtCore.QRect(150, 20, 1500, 40))
@@ -37,7 +36,7 @@ class Ui_Form(object):
         self.label_3.setGeometry(QtCore.QRect(30, 90, 150, 40))
         self.label_3.setStyleSheet("font:14pt")
 
-        self.startDateEdit = QtWidgets.QDateEdit(QDate.currentDate(),self.frame)
+        self.startDateEdit = QtWidgets.QDateEdit(QDate.currentDate(), self.frame)
         self.startDateEdit.setGeometry(QtCore.QRect(160, 90, 250, 40))
         self.startDateEdit.setStyleSheet("font:14pt;background:white")
         self.startDateEdit.setCalendarPopup(True)
@@ -56,23 +55,23 @@ class Ui_Form(object):
         self.label_5.setStyleSheet("font:14pt")
 
         self.remarklineEdit = QtWidgets.QLineEdit(self.frame)
-        self.remarklineEdit.setGeometry(QtCore.QRect(100, 140,  1500, 40))
+        self.remarklineEdit.setGeometry(QtCore.QRect(100, 140, 1500, 40))
         self.remarklineEdit.setStyleSheet("font:14pt;background:white")
 
         self.addButton = QtWidgets.QPushButton(self.frame)
-        self.addButton.setGeometry(QtCore.QRect(110, 200,200,45))
+        self.addButton.setGeometry(QtCore.QRect(110, 200, 200, 45))
         self.addButton.setStyleSheet("font:14pt;color:white;background: rgb(0,138,200)")
 
         self.deleteButton = QtWidgets.QPushButton(self.frame)
-        self.deleteButton.setGeometry(QtCore.QRect(330,200,200,45))
+        self.deleteButton.setGeometry(QtCore.QRect(330, 200, 200, 45))
         self.deleteButton.setStyleSheet("font:14pt;color:white;background: rgb(0,138,200)")
 
         self.startButton = QtWidgets.QPushButton(self.frame)
-        self.startButton.setGeometry(QtCore.QRect(550, 200,200,45))
+        self.startButton.setGeometry(QtCore.QRect(550, 200, 200, 45))
         self.startButton.setStyleSheet("font:14pt;color:white;background: rgb(0,138,200)")
 
         self.tableWidget = QtWidgets.QTableWidget(self.frame)
-        self.tableWidget.setGeometry(QtCore.QRect(10, 260,1900, 800))
+        self.tableWidget.setGeometry(QtCore.QRect(10, 260, 1900, 800))
         self.tableWidget.setStyleSheet("font:14pt;background:white")
         self.tableWidget.setColumnCount(4)
         self.tableWidget.setRowCount(16)
@@ -125,7 +124,6 @@ class Ui_Form(object):
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(14, item)
 
-
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
@@ -149,20 +147,23 @@ class Ui_Form(object):
         item = self.tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("Form", "训练状态"))
 
+
 class addTriangingplan(QtWidgets.QMainWindow, Ui_Form):
     def __init__(self):
         super(addTriangingplan, self).__init__()
         self.setupUi(self)
-        self.addButton.mousePressEvent=self.addButtonClick
+        self.addButton.mousePressEvent = self.addButtonClick
         self.deleteButton.mousePressEvent = self.deleteButtonClick
         self.startButton.mousePressEvent = self.startButtonClick
 
     def addButtonClick(self, *args):  # 添加训练计划
 
         ...
+
     def deleteButtonClick(self, *args):  # 删除训练计划
 
         ...
+
     def startButtonClick(self, *args):  # 开始训练，跳到相应界面
         ...
 
