@@ -4,6 +4,7 @@ import tool
 
 
 class Service:
+    # 仿照JAVA的MVC结构写的Service
     def __init__(self, model: tool.Model):
         self.model: tool.Model = model
 

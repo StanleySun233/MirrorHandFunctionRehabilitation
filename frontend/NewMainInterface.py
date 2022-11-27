@@ -1214,6 +1214,7 @@ class mainInterface(QtWidgets.QMainWindow, Ui_Form):
         self.initTrainLogTable()
 
     def trainingLog_tableWidgetDoubleClick(self, *args):
+        # 读取历史记录，打开相应的图片
         try:
             idx = int(self.trainingLog_tableWidget.selectedItems()[0].row())
         except:
@@ -1248,6 +1249,7 @@ class mainInterface(QtWidgets.QMainWindow, Ui_Form):
         self.timer.start(1000)  # 每隔一秒刷新一次，这里设置为1000ms  即1s
 
     def initPatientInfoTable(self):
+        # 初始化病人信息表
         self.patientInfoTable.setColumnCount(4)
         self.patientInfoTable.setRowCount(15)
         self.patientInfoTable.setHorizontalHeaderLabels(self.patientInfoSheetColumnsCn[1:])
@@ -1270,6 +1272,7 @@ class mainInterface(QtWidgets.QMainWindow, Ui_Form):
         self.patientInfoTableSetter(self.nowPage)
 
     def initTrainProgramTable(self):
+        # 初始化训练项目表
         self.trainingProgram_tableWidget.setColumnCount(3)
         self.trainingProgram_tableWidget.setRowCount(10)
         self.trainingProgram_tableWidget.setHorizontalHeaderLabels(self.trainingProgramSheetColumnsCn[1:])
@@ -1283,6 +1286,7 @@ class mainInterface(QtWidgets.QMainWindow, Ui_Form):
         pass
 
     def initTrainLogTable(self):
+        # 初始化训练日志表
         self.trainingLog_tableWidget.setColumnCount(4)
         self.trainingLog_tableWidget.setRowCount(10)
         self.trainingLog_tableWidget.setHorizontalHeaderLabels(self.trainingLogSheetColumnsCn)
@@ -1295,12 +1299,14 @@ class mainInterface(QtWidgets.QMainWindow, Ui_Form):
         pass
 
     def patientInfoTableClear(self):
+        # 情况病人信息表的内容
         # 清空表格内容
         for i in range(15):
             for j in range(1, 5):
                 self.patientInfoTable.setItem(i, j - 1, QTableWidgetItem(""))
 
     def patientInfoTableSetter(self, pages):
+        # 设置病人信息表的内容
         self.patientInfoTableClear()
         _translate = QtCore.QCoreApplication.translate
 
@@ -1356,6 +1362,7 @@ class mainInterface(QtWidgets.QMainWindow, Ui_Form):
         self.patientInfoTableSetter(self.nowPage)
 
     def patientInfoTableClick(self, *args):
+        # 点击病人信息表，右侧显示病人具体信息
         _translate = QtCore.QCoreApplication.translate
         selectIndex = int(self.patientInfoTable.selectedItems()[0].row())
         self.patientSelectedId = self.patientInfoSheet[(self.nowPage - 1) * 15 + selectIndex]['id']
@@ -1520,7 +1527,8 @@ class mainInterface(QtWidgets.QMainWindow, Ui_Form):
         ...
 
     def trainingProgramAddButtonClick(self, *args):  # 主界面-训练方案-新增
-        self.trainingProgramAddWindow = frontend.trainingProgram.AddTrainingplan
+        self.trainingProgramAddWindow = frontend.trainingProgram.AddTrainingplan.addTriangingplan()
+        self.trainingProgramAddWindow.show()
         ...
 
     def trainingLogButtonClick(self, *args):  # 主界面-训练日志
@@ -1692,6 +1700,7 @@ class mainInterface(QtWidgets.QMainWindow, Ui_Form):
         self.logButton.setStyleSheet("background:rgb(0,138,200);font:14pt;color:white")
 
     def trainButtonClicked(self, *args):
+        # 打开训练界面
         if self.patientSelectedId:
             self.trainingWindow = frontend.training.Training.trianging(self.patientSelectedId)
             self.trainingWindow.show()

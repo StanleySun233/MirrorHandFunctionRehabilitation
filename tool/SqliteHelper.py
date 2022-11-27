@@ -5,6 +5,12 @@ import tool
 
 
 class SqliteHelper:
+    # 数据库的增删改查，严格定义
+    # table: 表明
+    # ids: 物理id
+    # attrs: 是字典类型 where，后面跟的东西，e.g. attrs={"name":"张三"}表示 where name = '张三'
+    # val: 是字典类型 set，后面跟的东西，e.g. val={"name":"张三"}表示 set name = '张三'
+    # args: 是字典类型，insert特有，表示insert into xxx values(a,b,c)
     def __init__(self, path):
         self.connection = None
         self.path = path

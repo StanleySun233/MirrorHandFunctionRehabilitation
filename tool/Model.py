@@ -2,6 +2,7 @@ import tool
 
 
 class Model:
+    # 仿照JAVA的MVC结构写的Model
     def __init__(self, table, sqlClient):
         self.table = table
         self.sqlClient: tool.SqliteHelper.SqliteHelper = sqlClient

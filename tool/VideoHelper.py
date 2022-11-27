@@ -7,6 +7,7 @@ import tool
 
 
 class CameraReader:
+    # 调用摄像头
     def __init__(self, code, flip=True):
         self.code = code
         self.flip = flip
@@ -56,6 +57,12 @@ class CameraReader:
 
 
 class VideoWriter:
+    # 写视频
+    # path: 地址
+    # from: 格式，目前只写了mp4
+    # fps: 帧率
+    # size: 视频大小
+    # cap: 没用上
     def __init__(self, path, form=None, fps=None, size=None, cap: CameraReader = None):
         self.path = path
         self.form = form

@@ -2836,7 +2836,6 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
 
         self.leftCamera = tool.VideoHelper.CameraReader(config.LeftCaptureId)
         self.rightCamera = tool.VideoHelper.CameraReader(config.RightCaptureId)
-        # self.rightCamera = self.leftCamera
 
         self.cameraWorker = threading.Thread(target=self.cameraRead)
         self.cameraWorker.start()
@@ -2902,6 +2901,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
         self.rightCameraBlank = 0
 
     def closeEvent(self, a0: QtGui.QCloseEvent) -> None:
+        # 关闭界面
         threadingHelper = tool.ThreadingHelper.ThreadingHelper()
         threadingHelper.close(self.cameraWorker)
         self.leftCamera.release()
@@ -2977,6 +2977,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
         self.resetVideoRecorder()
 
     def resetVideoRecorder(self):
+        # 重制摄像头状态
         self.recordFlag = 0
         self.recordSheet = []
 
@@ -3014,6 +3015,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
         ...
 
     def startImagePlayer(self):
+        # 空间想象训练 开始播放视频
         self.beginTime = tool.Tools.getNowTime()
         trans = {"左": "left", "右": "right", "低难度": "easy", "中难度": "mid", "高难度": "hard"}
         _translate = QtCore.QCoreApplication.translate
@@ -3116,6 +3118,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
         self.spaceImageWindow.replacePicture(QPixmap(f"{config.GlobalPath}src/fig/welcome_use.jpg"))
 
     def basic_startTask(self):
+        # 基本功能动作训练，多线程开始
         self.beginTime = tool.Tools.getNowTime()
         _translate = QtCore.QCoreApplication.translate
         if self.basic_type == "AABB":
@@ -3285,6 +3288,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             self.threadHelper.close(self.basicStartTask)
 
     def basic_reset(self):
+        # 重制界面状态，用不上
         _translate = QtCore.QCoreApplication.translate
         self.basic_trainingModeLabel.setText(_translate("Form", "----"))
         self.basic_trainingTotalNumLabel.setText(_translate("Form", "----"))
@@ -3380,7 +3384,6 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
         ...
 
     def function_startButtonClick(self, *args):  # 功能动作训练-开始训练按钮
-
         _translate = QtCore.QCoreApplication.translate
         self.function_selectTrainingFrame.setVisible(False)  # 功能动作训练容器
         self.function_traingSituationFrame.setVisible(True)  # 功能动作-训练情况显示窗口
@@ -3469,7 +3472,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             self.functionStartTask.start()
 
             self.function_trianingGroupsLabel.setText(_translate("Form", str(self.functionGroupTime)))
-            # TODO
+            # TODO 没找到这个label名
             # self.function_trainingNumber
 
         else:
@@ -3482,6 +3485,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
             self.threadHelper.close(self.functionStartTask)
 
     def function_startTask(self):
+        # 功能动作训练的多线程开始
         self.beginTime = tool.Tools.getNowTime()
         _translate = QtCore.QCoreApplication.translate
         if self.function_type == "AABB":
@@ -3657,6 +3661,7 @@ class trianging(QtWidgets.QMainWindow, Ui_Form):
         ...
 
     def mirror_startButtonClick(self, *args):
+        # 镜像训练运动的开始和结束
         if self.mirror_isPlaying:
             self.mirror_startButton.setIcon(QApplication.style().standardIcon(QStyle.SP_MediaStop))
             self.mirror_startButton.setText("停止训练")

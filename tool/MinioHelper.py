@@ -4,6 +4,7 @@ import tool
 
 
 class MinioHelper:
+    # 现在用不上，之前视频没给的时候要用这个东西共享
     def __init__(self, ip, port, account, password, bucket):
         self.ip = ip
         self.port = port

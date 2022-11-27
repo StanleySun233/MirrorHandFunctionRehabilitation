@@ -3,7 +3,8 @@ import inspect
 
 
 class ThreadingHelper:
-    # 关闭进程是网上找的代码，不确定靠不靠谱。
+    # 关闭进程。
+    # 是网上找的代码，不确定靠不靠谱。
     def __init__(self):
         pass
 

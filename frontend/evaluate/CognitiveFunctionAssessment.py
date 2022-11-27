@@ -976,10 +976,6 @@ class Ui_MainWindow(object):
         self.BNT_downLoadButton.setText(_translate("MainWindow", "导出"))
 
 
-
-
-
-
 class cognitiveFunctionAssessment(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, patient_id):
         super(cognitiveFunctionAssessment, self).__init__()
